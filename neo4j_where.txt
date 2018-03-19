@@ -1,0 +1,91 @@
+像SQL一样，Neo4j CQL在CQL MATCH命令中提供了WHERE子句来过滤MATCH查询的结果。 
+此示例演示如何在MATCH Command中使用CQL WHERE子句根据员工名称检索员工详细信息。
+
+
+步骤1 -打开Neo4j数据浏览器
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+步骤3 -点击“执行”按钮并观察结果。 
+如果我们观察结果，它返回4个员工节点详细信息。
+
+
+步骤4 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+WHERE emp.name = 'Abc'
+RETURN emp
+步骤5 -点击“执行”按钮并观察结果。 
+
+
+此示例演示如何在MATCH Command中的CQL WHERE子句中使用多个条件与布尔运算符，以根据员工名称检索员工详细信息。
+
+
+步骤1 -打开Neo4j数据浏览器
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+步骤3 -点击“执行”按钮并观察结果。 
+
+
+步骤4 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+WHERE emp.name = 'Abc' OR emp.name = 'Xyz'
+RETURN emp
+步骤5-点击“执行”按钮并观察结果。
+
+
+
+
+
+使用WHERE子句创建关系
+
+在Neo4J CQL中，我们可以以不同的方式创建拖曳节点之间的关系。
+
+    创建两个现有节点之间的关系
+
+    一次创建两个节点和它们之间的关系
+
+    使用WHERE子句创建两个现有节点之间的关系
+
+我们已经讨论了前两章中的前两种方法。 现在我们将在本章中讨论“使用WHERE子句创建两个现有节点之间的关系”。
+语法
+
+MATCH (<node1-label-name>:<node1-name>),(<node2-label-name>:<node2-name>) 
+WHERE <condition>
+CREATE (<node1-label-name>)-[<relationship-label-name>:<relationship-name>
+       {<relationship-properties>}]->(<node2-label-name>) 
+
+此示例演示如何使用WHERE子句创建两个现有节点之间的关系。
+
+
+步骤1 -打开Neo4J数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令，以验证我们的Neo4J数据库中是否存在所需的客户节点。
+
+MATCH (cust:Customer)
+RETURN cust.id,cust.name,cust.dob
+步骤3 -点击“执行”按钮并观察结果。
+步骤4 -在数据浏览器上键入以下命令，验证我们的Neo4J数据库中是否存在所需的CreditCard节点。
+
+MATCH (cc:CreditCard)
+RETURN cc.id,cc.number,cc.expiredate,cc.cvv
+步骤5 -点击“执行”按钮并观察结果。
+
+步骤6 -在数据浏览器上键入以下命令以创建客户和CreditCard节点之间的关系。
+
+MATCH (cust:Customer),(cc:CreditCard) 
+WHERE cust.id = "1001" AND cc.id= "5001" 
+CREATE (cust)-[r:DO_SHOPPING_WITH{shopdate:"12/12/2014",price:55000}]->(cc) 
+RETURN r
+步骤7 -点击“执行”按钮并观察结果。 
+单击关系并在单独的窗口中观察其属性
+
+
+
+
+

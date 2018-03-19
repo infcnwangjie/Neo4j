@@ -1,0 +1,58 @@
+
+由 fashoon 创建，youj 最后一次修改 2016-12-19
+
+与SQL一样，Neo4j CQL提供了一个IN运算符，以便为CQL命令提供值的集合。
+
+
+IN操作符语法
+
+IN[<Collection-of-values>]
+
+
+语法说明：
+S.No.	语法元素	描述
+1。	IN	它是一个Neo4j CQL关键字。
+2。	[	它告诉Neo4j CQL，一个值的集合的开始。
+3。	]	它告诉Neo4j CQL，值集合的结束。
+4。	<Collection-of-values>	它是由逗号运算符分隔的值的集合。
+
+让我们用一个例子来研究一下。
+
+
+例如：
+
+此示例演示如何使用IN运算符检索Employee节点详细信息。
+
+
+步骤1 -打开Neo4j数据浏览器
+
+
+打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器中的dollar提示符下键入以下命令。
+
+MATCH (e:Employee) 
+RETURN e.id,e.name,e.sal,e.deptno
+
+
+MATCH (e:Employee) RETURN e.id,e.name,e.sal,e.deptno
+
+
+步骤3 -点击执行按钮，观察结果。
+
+
+我们可以观察到这个查询返回4行。
+
+
+步骤4 -键入以下命令，然后单击执行按钮。
+
+MATCH (e:Employee) 
+WHERE e.id IN [123,124]
+RETURN e.id,e.name,e.sal,e.deptno
+
+
+id匹配
+此查询仅返回在IN运算符中指定的id匹配的两行。
+
+

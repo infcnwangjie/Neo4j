@@ -1,0 +1,83 @@
+
+Neo4j CQL - NULL值
+由 fashoon 创建，youj 最后一次修改 2016-12-19
+
+Neo4j CQL将空值视为对节点或关系的属性的缺失值或未定义值。
+
+当我们创建一个具有现有节点标签名称但未指定其属性值的节点时，它将创建一个具有NULL属性值的新节点。
+
+让我们用一个例子来看这个。
+
+
+例如：
+
+此示例演示CREATE命令如何将NULL值设置为未定义属性。 如何检索没有NULL行的节点的所有行。
+
+
+步骤1 - 打开Neo4j数据浏览器
+
+
+打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器中的美元提示符下键入以下命令。
+
+MATCH (e:Employee) 
+RETURN e.id,e.name,e.sal,e.deptno
+
+
+MATCH (e:Employee) RETURN e.id,e.name,e.sal,e.deptno
+
+
+步骤3 -点击执行按钮，观察结果。
+
+
+这里观察所有Employee节点不包含NULL属性值。
+
+
+步骤4 -键入以下命令，然后单击执行按钮
+
+CREATE (e:Employee)
+
+
+如果我们观察到上面的成功消息，它没有创建任何属性到Employee节点。
+
+
+步骤5 -键入以下命令，然后单击执行按钮
+
+MATCH (e:Employee) 
+RETURN e.id,e.name,e.sal,e.deptno)
+
+
+MATCH (e:Employee) RETURN e.id,e.name,e.sal,e.deptno)
+如果我们观察这些结果，则以前的CREATE命令通过将其所有属性值设置为NULL来插入Employee节点。
+
+
+步骤6 -键入以下命令并单击执行按钮
+
+MATCH (e:Employee) 
+WHERE e.id IS NOT NULL
+RETURN e.id,e.name,e.sal,e.deptno
+
+MATCH (e:Employee) WHERE e.id IS NOT NULL RETURN e.id,e.name,e.sal,e.deptno
+
+如果我们观察这些结果，它不返回NULL值行，因为我们提供了一个WHERE子句来过滤该行，即Id属性不应该包含NULL值。
+
+WHERE  IS NOT NULL
+
+这里我们使用IS NOT运算符来过滤NULL行。
+
+
+步骤7 -键入以下命令，然后单击执行按钮
+
+MATCH (e:Employee) 
+WHERE e.id IS NULL
+RETURN e.id,e.name,e.sal,e.deptno
+
+
+返回NULL值行
+如果我们观察这些结果，它只返回NULL值行，因为我们提供了一个WHERE子句来检查ID值为NULL。
+
+WHERE  IS NULL
+
+这里我们使用IS操作符来仅返回NULL行。

@@ -1,0 +1,136 @@
+ MERGE命令是CREATE命令和MATCH命令的组合。
+
+MERGE = CREATE + MATCH
+
+Neo4j CQL MERGE命令在图中搜索给定模式，如果存在，则返回结果
+
+如果它不存在于图中，则它创建新的节点/关系并返回结果。
+ Neo4j CQL CREATE示例
+
+此示例通过使用CREATE，MATCH和RETURN命令创建Google+个人资料，执行上述所有操作。
+操作（1）：创建具有属性：Id，Name的Profile节点
+
+步骤1 -打开Neo4j数据浏览器
+
+
+打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+CREATE (gp1:GoogleProfile1 {Id: 201401, Name:"Apple"})
+
+
+CREATE (gp1:GoogleProfile1 {Id: 201401, Name:"Apple"})
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+添加两个属性
+如果我们观察到成功消息，它已经向GoogleProfile1节点添加了两个属性。
+
+
+操作（2）：创建具有相同属性的同一个Profile节点：Id，Name。
+
+步骤1 -打开Neo4j的数据浏览器
+
+
+步骤2 -输入在数据浏览器下面的命令
+
+CREATE (gp1:GoogleProfile1 {Id: 201401, Name:"Apple"})
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+如果我们观察到成功消息，它已经向GoogleProfile1节点添加了两个属性。
+
+
+操作（3）：检索所有Profile节点详细信息并观察结果。
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH  (gp1:GoogleProfile1) 
+RETURN gp1.Id,gp1.Name
+
+
+MATCH (gp1:GoogleProfile1) RETURN gp1.Id,gp1.Name
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+2行重复的值
+如果我们观察到上面的查询结果，它显示2行重复的值。
+
+
+CQL CREATE命令检查此节点是否可用，它只是在数据库中创建新节点。
+
+通过观察这些结果，我们可以说CREATE命令总是向数据库添加新的节点。
+
+
+Neo4j CQL MERGE示例
+
+此示例通过使用MERGE和RETURN命令创建Google+个人资料，执行相同的上述操作。
+操作（1）：创建具有属性：Id，Name的Profile节点
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MERGE (gp2:GoogleProfile2{ Id: 201402,Name:"Nokia"})
+
+
+MERGE (gp2:GoogleProfile2{ Id: 201402,Name:"Nokia"})
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+向GoogleProfile1节点添加了两个属性
+如果我们观察到成功消息，它已经向GoogleProfile1节点添加了两个属性。
+
+
+操作（2）：创建具有相同属性的同一个Profile节点：Id，Name。
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MERGE (gp2:GoogleProfile2{ Id: 201402,Name:"Nokia"})
+
+
+MERGE (gp2:GoogleProfile2{ Id: 201402,Name:"Nokia"})
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+如果我们观察到成功消息，它已经向GoogleProfile1节点添加了两个属性。
+
+
+操作（3）：检索所有Profile节点详细信息并观察结果
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH  (gp1:GoogleProfile1) 
+RETURN gp1.Id,gp1.Name
+
+
+MATCH (gp1:GoogleProfile1) RETURN gp1.Id,gp1.Name
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+如果我们观察上面的查询结果，它只显示一行，因为CQL MERGE命令检查该节点在数据库中是否可用。 如果它不存在，它创建新节点。 否则，它不创建新的。
+

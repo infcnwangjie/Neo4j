@@ -1,0 +1,35 @@
+
+Neo4j CQL - SET子句
+
+有时，根据我们的客户端要求，我们需要向现有节点或关系添加新属性。
+
+要做到这一点，Neo4j CQL提供了一个SET子句。
+
+Neo4j CQL已提供SET子句来执行以下操作。
+
+    向现有节点或关系添加新属性
+    添加或更新属性值
+
+
+这里我们可以观察到“DebitCard”节点有5个属性。 现在我们将向此节点添加新属性“atm_pin”。
+
+步骤1 -打开Neo4j数据浏览器
+
+
+DebitCard节点添加新属性
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH (dc:DebitCard)
+RETURN dc
+
+步骤4 -在数据浏览器上键入以下命令
+步骤5 -点击“执行”按钮并观察结果。
+
+这里我们可以观察到新的属性被添加到“DebitCard”节点。 
+
+MATCH (dc:DebitCard)
+SET dc.atm_pin = 3456
+RETURN dc
+

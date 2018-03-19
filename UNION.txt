@@ -1,0 +1,147 @@
+与SQL一样，Neo4j CQL有两个子句，将两个不同的结果合并成一组结果
+
+    UNION
+    UNION ALL
+
+
+UNION子句
+
+它将两组结果中的公共行组合并返回到一组结果中。 它不从两个节点返回重复的行。 
+
+在本章中，我们将采取一个银行应用程序的节点：信用卡式和借记卡解释UNION子句
+信用卡式节点数据
+
+第1步 -打开Neo4j的数据浏览器
+Neo4j的CQL教程
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (cc:CreditCard) RETURN cc
+
+点击“下载CSV”来查看结果
+Neo4j的CQL教程
+借记卡数据的节点
+
+第1步 -打开Neo4j的数据浏览器
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (dc:DebitCard) RETURN dc
+
+点击“下载CSV”来查看结果
+Neo4j的CQL教程
+
+我们将利用这些数据来解释的Neo4j CQL UNION与实例的使用
+例
+
+本例说明：如果UNION子句的这两个查询确实有相同的名称或相同的数据类型及其列会发生什么。
+
+第1步 -打开Neo4j的数据浏览器
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (cc:CreditCard) RETURN cc.id,cc.number
+UNION
+MATCH (dc:DebitCard) RETURN dc.id,dc.number
+
+Neo4j的CQL教程
+
+第3步 -点击执行按钮，看到成功消息数据浏览器。
+Neo4j的CQL教程
+
+这表明，这两个查询应具有相同的列名。
+
+首先查询有：cc.id，cc.number。
+
+第二个查询有：dc.id，dc.number。
+
+这里既有信用卡式和借记卡具有相同的属性名：身份证和号码，但他们有不同的节点名称前缀。这就是为什么UNION命令显示此错误消息。为了避免这种错误，Neo4j的CQL提供“AS”子句。
+
+像CQL，CQL Neo4j的“AS”子句用于给一些别名。
+例
+
+此示例演示如何使用UNION子句从两个节点检索数据。
+
+第1步 -打开Neo4j的数据浏览器
+
+第2步 -在数据浏览器的美元提示符处键入以下命令，然后单击执行按钮。
+
+MATCH (cc:CreditCard)
+RETURN cc.id as id,cc.number as number,cc.name as name,
+   cc.valid_from as valid_from,cc.valid_to as valid_to
+UNION
+MATCH (dc:DebitCard)
+RETURN dc.id as id,dc.number as number,dc.name as name,
+   dc.valid_from as valid_from,dc.valid_to as valid_to
+
+Neo4j的CQL教程
+
+在这里，因为UNION子句过滤它们，我们可以看到该命令返回9行没有重复的行。
+UNION ALL子句
+
+它结合并返回两个结果集的所有行成一个单一的结果集。它还返回由两个节点重复行。
+限制
+
+结果列类型，并从两个结果集的名字必须匹配，这意味着列名称应该是相同的，列的数据类型应该是相同的。
+UNION ALL子句语法
+
+<MATCH Command1>
+UNION ALL
+<MATCH Command2>
+
+语法说明
+S.No.	语法元素	描述
+1。	<MATCH COMMAND1>	这是CQL match命令由UNION子句中使用的一个。
+2。	<MATCH命令2>	这是CQL match命令两到由UNION子句中使用。
+3。	UNION ALL	这是UNION ALL子句的Neo4j的CQL关键字。
+
+注意 -
+
+如果这两个查询不返回相同的列名和数据类型，那么它抛出一个错误。
+
+在本章中，我们将采取一个银行应用程序的节点：信用卡式和借记卡解释UNION子句
+信用卡式节点数据
+
+第1步 -打开Neo4j的数据浏览器
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (cc:CreditCard) RETURN cc
+
+点击“下载CSV”来查看结果
+Neo4j的CQL教程
+借记卡数据的节点
+
+第1步 -打开Neo4j的数据浏览器
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (dc:DebitCard) RETURN dc
+
+点击“下载CSV”来查看结果
+Neo4j的CQL教程
+
+我们将利用这些数据来解释的Neo4j CQL UNION与实例的使用
+例
+
+本例说明：如果UNION子句的这两个查询确实有相同的名称或相同的数据类型及其列会发生什么。
+
+第1步 -打开Neo4j的数据浏览器
+Neo4j的CQL教程
+
+这是Neo4j的数据浏览器首页
+
+第2步 -在数据浏览器的美元提示符处键入以下命令。
+
+MATCH (cc:CreditCard)
+RETURN cc.id as id,cc.number as number,cc.name as name,
+   cc.valid_from as valid_from,cc.valid_to as valid_to
+UNION ALL
+MATCH (dc:DebitCard)
+RETURN dc.id as id,dc.number as number,dc.name as name,
+   dc.valid_from as valid_from,dc.valid_to as valid_to
+
+第3步 -点击执行按钮，看到成功消息数据浏览器。
+Neo4j的CQL教程
+
+在这里，我们可以观察到这个命令返回10行，因为与UNION ALL子句不过滤它们重复行。如果我们使用UNION子句，它将返回只有9行。详情请参阅UNION子句章节进行检查。 

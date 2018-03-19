@@ -1,0 +1,79 @@
+ 使用Neo4j CQL CREATE命令
+
+    为节点创建单个标签
+
+    为节点创建多个标签
+
+    为关系创建单个标签
+
+我们将在本章中讨论如何创建一个节点的单个标签或多个标签。 我们将在下一章讨论如何为关系创建一个单独的标签。 
+
+步骤1 -打开Neo4j数据浏览器
+
+步骤2 -在数据浏览器上键入以下命令
+
+CREATE (google1:GooglePlusProfile)
+
+这里google1是一个节点名
+
+GooglePlusProfile是google1node的标签名称
+步骤3 -点击“执行”按钮并观察结果。
+
+
+多个标签到节点
+语法：
+
+CREATE (<node-name>:<label-name1>:<label-name2>.....:<label-namen>)
+
+
+ 步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+CREATE (m:Movie:Cinema:Film:Picture)
+
+这里m是一个节点名
+
+Movie, Cinema, Film, Picture是m节点的多个标签名称
+步骤3 -点击“执行”按钮并观察结果。 
+
+
+
+
+单个标签到关系
+
+语法：
+
+CREATE (<node1-name>:<label1-name>)-
+	[(<relationship-name>:<relationship-label-name>)]
+	->(<node2-name>:<label2-name>)
+语法说明
+S.No.	语法元素	描述
+1	CREATE
+创建	它是一个Neo4J CQL关键字。
+2	<node1-name>
+<节点1名>	它是From节点的名称。
+3	<node2-name>
+<节点2名>	它是To节点的名称。
+4	<label1-name>
+<LABEL1名称>	它是From节点的标签名称
+5	<label1-name>
+<LABEL1名称>	它是To节点的标签名称。
+6	<relationship-name>
+<关系名称>	它是一个关系的名称。
+7	<relationship-label-name>
+<相关标签名称>	它是一个关系的标签名称。
+
+
+
+步骤1 -打开Neo4J数据浏览器
+步骤2 -在数据浏览器上键入以下命令
+
+CREATE (p1:Profile1)-[r1:LIKES]->(p2:Profile2)
+
+这里p1和profile1是节点名称和节点标签名称“From Node”
+p2和Profile2是“To Node”的节点名称和节点标签名称
+r1是关系名称
+LIKES是一个关系标签名称
+步骤3 -点击“执行”按钮并观察结果。 

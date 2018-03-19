@@ -1,0 +1,36 @@
+此示例演示如何按照升序排序“员工名称”结果。
+
+
+步骤1 -打开Neo4j数据浏览器
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+
+步骤3 -点击“执行”按钮并观察结果。
+它返回数据库中可用的结果的总数：4条记录
+步骤4 -输入在数据浏览器下面的命令
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+ORDER BY emp.name
+步骤5 -点击“执行”按钮并观察结果。
+如果我们观察结果，现在按照Employee.name按升序排序记录。
+
+此示例演示如何按照员工名称按降序使用排序结果。
+
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在数据浏览器上键入以下命令
+
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+步骤3 -点击“执行”按钮并观察结果。
+它返回数据库中可用的结果的总数：4条记录
+步骤4 - 在数据浏览器上键入以下命令
+MATCH (emp:Employee)
+RETURN emp.empid,emp.name,emp.salary,emp.deptno
+ORDER BY emp.name DESC
+第5步-点击“执行”按钮并观察结果。
+

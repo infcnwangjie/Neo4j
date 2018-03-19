@@ -1,0 +1,67 @@
+创建客户节点
+步骤1 -打开Neo4j数据浏览器。 
+步骤2 -在数据浏览器中的dollar提示符下键入以下命令。
+
+CREATE (e:Customer{id:"1001",name:"Abc",dob:"01/10/1982"})
+这里 -
+
+    e是节点名称
+    在这里Customer是节点标签名称
+    id，name和dob是Customer节点的属性名称
+步骤3 -单击执行按钮创建具有3个属性的客户节点。
+
+
+创建CreditCard节点
+ 步骤1 -打开Neo4j数据浏览器。
+
+
+步骤2 -在数据浏览器中的美元提示符下键入以下命令。
+
+CREATE (cc:CreditCard{id:"5001",number:"1234567890",cvv:"888",expiredate:"20/17"})
+
+这里c是一个节点名
+
+这里CreditCard是节点标签名称
+
+id，number，cvv和expiredate是CreditCard节点的属性名称
+步骤3 -单击执行按钮创建具有4个属性的CreditCard节点。 
+
+观察节点
+
+现在我们创建了两个节点：Customer和CreditCard
+
+我们需要使用带有RETURN子句的Neo4j CQL MATCH命令查看这两个节点的详细信息
+
+
+ 查看客户节点详细信息
+
+步骤1 -打开Neo4j数据浏览器
+
+步骤2 -在数据浏览器中的美元提示符下键入以下命令。
+
+MATCH (e:Customer)
+RETURN e.id,e.name,e.dob
+
+这里e是节点名
+
+在这里Customer是节点标签名称
+
+id，name和dob是Customer节点的属性名称
+
+步骤3 -单击Execute按钮运行此命令。 
+
+查看CreditCard节点详细信息
+
+
+步骤1 -打开Neo4j数据浏览器
+
+步骤2 -在数据浏览器中的dollar提示符下键入以下命令。
+
+MATCH (cc:CreditCard)
+RETURN cc.id,cc.number,cc.cvv,cc.expiredate
+
+这里cc是一个节点名
+
+这里CreditCard是节点标签名称
+
+id，number，cvv，expiredate是CreditCard节点的属性名称

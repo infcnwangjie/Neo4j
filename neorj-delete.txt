@@ -1,0 +1,101 @@
+
+Neo4j CQL - DELETE删除
+由 youj 创建， 最后一次修改 2016-12-27
+
+Neo4j使用CQL DELETE子句
+
+    删除节点。
+    删除节点及相关节点和关系。
+
+我们将在本章中讨论如何删除一个节点。 我们将在下一章讨论如何删除节点和相关的节点和关系。
+
+
+删除节点 -
+
+通过使用此命令，我们可以从数据库永久删除节点及其关联的属性。
+
+
+DELETE节点子句语法
+
+DELETE <node-name-list>
+
+S.No.	语法元素	描述
+1.	DELETE	它是一个Neo4j CQL关键字。
+2.	<node-name-list>	它是一个要从数据库中删除的节点名称列表。
+
+
+注意 -
+
+我们应该使用逗号（，）运算符来分隔节点名。
+
+
+例如：
+
+此示例演示如何从数据库中永久删除节点。
+
+
+步骤1 - 打开Neo4j数据浏览器。
+
+
+步骤2 - 在数据浏览器上键入以下命令
+
+MATCH (e: 'Employee') RETURN e 
+
+
+注意 -
+
+MATCH (e: 'Employee') RETURN e
+
+MATCH (e: "Employee") RETURN e
+
+MATCH (e: Employee) RETURN e
+
+
+所有三个命令都相同，我们可以选择这些命令中的任何一个。
+步骤3 - 点击“执行”按钮并观察结果
+
+这里我们可以观察到在数据库中有一个节点可用“Employee”名称。
+
+
+步骤4 - 在数据浏览器上键入以下命令。
+
+MATCH (e: Employee) DELETE e
+
+现在，而不是“返回e”，使用“DELETE e”命令删除Employee节点
+步骤5 - 单击“执行”按钮并观察结果。
+这里我们可以看到一个节点从数据库中删除。
+
+现在检查是否从数据库中删除Employee节点。
+
+步骤6 - 键入以下命令，然后单击执行命令。
+
+MATCH (e: Employee) RETURN e
+在这里我们可以观察到Employee节点被永久删除为零查询返回的行。
+
+DELETE节点和关系子句语法
+
+DELETE <node1-name>,<node2-name>,<relationship-name>
+
+此示例演示如何从数据库永久删除节点及其关联节点和关系。
+
+
+步骤1 - 打开Neo4j数据浏览器
+
+
+步骤2 - 在数据浏览器上键入以下命令
+
+MATCH (cc:CreditCard)-[r]-(c:Customer)RETURN r 
+Step 3 - 点击“执行”按钮并观察结果。
+步骤4 - 在数据浏览器上键入以下命令
+
+MATCH (cc: CreditCard)-[rel]-(c:Customer) 
+DELETE cc,c,rel
+步骤5 - 点击“执行”按钮并观察结果。
+这里我们可以观察到两个节点及其关联的10个关系被成功删除。
+
+现在检查DELETE操作是否成功完成。
+
+步骤6 - 在数据浏览器上键入以下命令。
+
+MATCH (cc:CreditCard)-[r]-(c:Customer) RETURN r
+步骤7 - 点击“执行”按钮并观察结果。

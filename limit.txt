@@ -1,0 +1,30 @@
+本示例演示如何使用CQL LIMIT子句减少MATCH + RETURN查询返回的记录数。
+
+
+步骤1 -打开Neo4j数据浏览器
+
+
+打开Neo4j数据浏览器
+它是Neo4j数据浏览器主页
+
+
+步骤2 -在没有LIMIT子句的数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+RETURN emp
+
+
+MATCH (emp:Employee) RETURN emp
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+它返回数据库中可用的结果的总数：4条记录
+
+
+步骤4 -使用LIMIT子句在数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+RETURN emp
+LIMIT 2

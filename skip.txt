@@ -1,0 +1,58 @@
+ Neo4j CQL SKIP子句
+
+Neo4j CQL已提供“SKIP”子句来过滤或限制查询返回的行数。 它修整了CQL查询结果集顶部的结果。
+
+
+如果我们要从CQL查询结果集底部修整结果，那么我们应该使用CQL LIMIT子句。 请参阅本章的上一节CQL LIMIT子句。
+
+
+SKIP子句语法：
+
+SKIP <number>
+
+
+语法说明：
+S.No.	语法元素	描述
+1。	SKIP	它是一个Neo4j CQL关键字。
+2。	<number>	它是一个间隔值。
+
+例如：
+
+此示例演示如何使用CQL SKIP子句减少MATCH + RETURN查询返回的记录数。
+
+
+步骤1 -打开Neo4j数据浏览器
+
+
+步骤2 -在没有SKIP子句的数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+RETURN emp
+
+
+MATCH (emp:Employee) RETURN emp
+
+
+步骤3 -点击“执行”按钮并观察结果。
+
+
+据库中可用的结果
+它返回数据库中可用的结果的总数：4条记录
+
+
+步骤4 -在带有SKIP子句的数据浏览器上键入以下命令
+
+MATCH (emp:Employee) 
+RETURN emp
+SKIP 2
+
+
+MATCH (emp:Employee) RETURN emp SKIP 2
+
+步骤5 -点击“执行”按钮并观察结果。
+
+
+skip = 2
+它只返回来自Bottom的两个结果，因为我们定义了skip = 2。这意味着最后两行。
+
+
